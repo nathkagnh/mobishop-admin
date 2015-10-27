@@ -1,0 +1,84 @@
+<?php
+	$this->headScript()->appendFile(
+    '//cdn.ckeditor.com/4.5.4/full/ckeditor.js',
+    'text/javascript'
+	);
+	$this->headScript()->appendFile(
+    '//code.jquery.com/jquery-1.11.3.min.js',
+    'text/javascript'
+	);
+
+?>
+<script type="text/javascript">
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result).width(150);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<h3>Shop-Info</h3>
+</br>
+</br>
+<form action="" method="post">
+	<table>
+		<tr>
+			<td>
+				<label for="name">Shop name:</label>
+			</td>
+			<td>
+				<input type="text" name="name" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="logo">Logo image:</label>
+			</td>
+			<td>
+				<div>
+					<img id="blah" src="#" alt="your image" />
+					<input type="file" name="logo" accept="image/*" onchange="readURL(this);">
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="address">Address:</label>
+			</td>
+			<td>
+				<input type="text" name="address" required="required" title="separator by ';'">
+				(separator by ';')
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="tel">Tel:</label>
+			</td>
+			<td>
+				<input type="text" name="tel" required="required" title="separator by ';'">
+				(separator by ';')
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="introduce">Introduce:</label>
+			</td>
+			<td>
+				<textarea name="introduce"></textarea>
+		        <script>
+		            CKEDITOR.replace( 'introduce' );
+		        </script>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="Save">
+			</td>
+		</tr>
+	</table>
+</form>

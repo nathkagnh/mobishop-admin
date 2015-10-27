@@ -1,0 +1,81 @@
+<h3>Create user page</h3>
+</br>
+<a href="<?php echo $this->url('user');?>">List users</a>
+</br>
+</br>
+<span style="color: orange"><?php if(isset($message)) echo $message; ?></span>
+<form action="" method="post">
+	<table>
+		<tr>
+			<td>
+				<label for="pass">Email: </label>
+			</td>
+			<td>
+				<input type="email" name="email" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="pass">Password: </label>
+			</td>
+			<td>
+				<input type="password" name="pass" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="pass">Confirm password:</label>
+			</td>
+			<td>
+				<input type="password" name="repass" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="name">Full name: </label>
+			</td>
+			<td>
+				<input type="text" name="name" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="address">Address: </label>
+			</td>
+			<td>
+				<input type="text" name="address" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="tel">Tel: </label>
+			</td>
+			<td>
+				<input type="tel" name="tel" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>Status:</td>
+			<td>
+				<select name="status">
+					<option value="0" selected="selected">not active</option>
+					<option value="1">activated</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Is admin:</td>
+			<td>
+				<select name="admin">
+					<option value="0" selected="selected">no</option>
+					<option value="1">yes</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="Create">
+			</td>
+		</tr>
+	</table>
+</form>

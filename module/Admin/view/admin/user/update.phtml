@@ -1,0 +1,81 @@
+<h3>Update-User page</h3>
+</br>
+<a href="<?php echo $this->url('user');?>">List users</a>
+</br>
+</br>
+<span style="color: orange"><?php if(isset($message)) echo $message; ?></span>
+<form action="" method="post">
+	<table>
+		<tr>
+			<td>
+				<label for="pass">Email: </label>
+			</td>
+			<td>
+				<input type="email" name="email" required="required" value="<?php echo $user->email;?>" disabled>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="pass">Password: </label>
+			</td>
+			<td>
+				<input type="password" name="pass" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="pass">Confirm password:</label>
+			</td>
+			<td>
+				<input type="password" name="repass" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="name">Full name: </label>
+			</td>
+			<td>
+				<input type="text" name="name" required="required" value="<?php echo $user->name;?>">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="address">Address: </label>
+			</td>
+			<td>
+				<input type="text" name="address" required="required" value="<?php echo $user->address;?>">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="tel">Tel: </label>
+			</td>
+			<td>
+				<input type="tel" name="tel" required="required" value="<?php echo $user->tel;?>">
+			</td>
+		</tr>
+		<tr>
+			<td>Status:</td>
+			<td>
+				<select name="status">
+					<option value="0" <?php if((int)$user->status==0) echo 'selected="selected"';?> >not active</option>
+					<option value="1" <?php if((int)$user->status==1) echo 'selected="selected"';?> >activated</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Is admin:</td>
+			<td>
+				<select name="admin">
+					<option value="0" <?php if((int)$user->admin==0) echo 'selected="selected"';?> >no</option>
+					<option value="1" <?php if((int)$user->admin==1) echo 'selected="selected"';?> >yes</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="Update">
+			</td>
+		</tr>
+	</table>
+</form>

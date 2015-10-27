@@ -1,0 +1,43 @@
+<h3>User-Manager page</h3>
+</br>
+Menu:
+</br>
+<ur>
+	<li>Create new user: <a href="<?php echo $this->url('user', array('action'=>'create')); ?>">create</a></li>
+</ur>
+<table>
+	<caption>Users Table</caption>
+	<thead>
+		<tr>
+			<th>..</th>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Pass</th>
+			<th>Address</th>
+			<th>Tel</th>
+			<th>Status</th>
+			<th>Admin</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php $i=0; foreach($users as $user): $i++;?>
+		<tr>
+			<td><?php echo $i; ?></td>
+			<td><?php echo $this->escapeHtml($user->id); ?></td>
+			<td><?php echo $this->escapeHtml($user->name); ?></td>
+			<td><?php echo $this->escapeHtml($user->email); ?></td>
+			<td><?php echo $this->escapeHtml($user->pass); ?></td>
+			<td><?php echo $this->escapeHtml($user->address); ?></td>
+			<td><?php echo $this->escapeHtml($user->tel); ?></td>
+			<td><?php echo $this->escapeHtml($user->status); ?></td>
+			<td><?php echo $this->escapeHtml($user->admin); ?></td>
+			<td>
+				<a href="<?php echo $this->url('user', array('action'=>'update', 'id'=>$user->id)); ?>">Update</a>
+				<a href="<?php echo $this->url('user', array('action'=>'delete', 'id'=>$user->id)); ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach ?>
+	</tbody>
+</table>
