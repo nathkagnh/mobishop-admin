@@ -25,7 +25,7 @@
 <h3>Shop-Info</h3>
 </br>
 </br>
-<form action="<?php echo $this->url('shopinfo', array('action'=>'update')) ?>" method="post">
+<form action="<?php echo $this->url('shopinfo', array('action'=>'update')) ?>" method="post" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>
@@ -41,7 +41,7 @@
 			</td>
 			<td>
 				<div>
-					<img id="blah" src="#" alt="your image" />
+					<img id="blah" src="<?php if(isset($info->logo)) echo $info->logo; ?>" alt="your image" />
 					<input type="file" name="logo" accept="image/*" onchange="readURL(this);">
 				</div>
 			</td>

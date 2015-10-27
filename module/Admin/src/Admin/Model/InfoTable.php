@@ -4,8 +4,6 @@ namespace Admin\Model;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
-use Admin\Helper\StringHelper;
-
 class InfoTable
 {
 	protected $tableGateway;
@@ -23,10 +21,9 @@ class InfoTable
 	public function updateInfo(Info $info)
 	{
 		$data=array();
-		$formatString=new StringHelper();
 
 		if(!empty($info->name)) $data['name']=$info->name;
-		if(!empty($info->logo)) $data['logo']=$formatString->randomString(4).$info->logo;
+		if(!empty($info->logo)) $data['logo']=$info->logo;
 		if(!empty($info->address)) $data['address']=$info->address;
 		if(!empty($info->tel)) $data['tel']=$info->tel;
 		if(!empty($info->introduce)) $data['introduce']=$info->introduce;
