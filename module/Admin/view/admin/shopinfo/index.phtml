@@ -25,14 +25,14 @@
 <h3>Shop-Info</h3>
 </br>
 </br>
-<form action="" method="post">
+<form action="<?php echo $this->url('shopinfo', array('action'=>'update')) ?>" method="post">
 	<table>
 		<tr>
 			<td>
 				<label for="name">Shop name:</label>
 			</td>
 			<td>
-				<input type="text" name="name" required="required">
+				<input type="text" name="name" required="required" value="<?php if(isset($info->name)) echo $info->name; ?>">
 			</td>
 		</tr>
 		<tr>
@@ -51,7 +51,7 @@
 				<label for="address">Address:</label>
 			</td>
 			<td>
-				<input type="text" name="address" required="required" title="separator by ';'">
+				<input type="text" name="address" required="required" title="separator by ';'" value="<?php if(isset($info->address)) echo $info->address; ?>">
 				(separator by ';')
 			</td>
 		</tr>
@@ -60,7 +60,7 @@
 				<label for="tel">Tel:</label>
 			</td>
 			<td>
-				<input type="text" name="tel" required="required" title="separator by ';'">
+				<input type="text" name="tel" required="required" title="separator by ';'" value="<?php if(isset($info->tel)) echo $info->tel; ?>">
 				(separator by ';')
 			</td>
 		</tr>
@@ -69,7 +69,7 @@
 				<label for="introduce">Introduce:</label>
 			</td>
 			<td>
-				<textarea name="introduce"></textarea>
+				<textarea name="introduce"><?php if(isset($info->introduce)) echo $info->introduce; ?></textarea>
 		        <script>
 		            CKEDITOR.replace( 'introduce' );
 		        </script>

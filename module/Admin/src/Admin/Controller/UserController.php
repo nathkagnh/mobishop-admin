@@ -91,7 +91,7 @@ class UserController extends AbstractActionController
     	if(!$this->userTable)
     	{
     		$sm=$this->getServiceLocator();
-    		$this->userTable=$sm->get('User\Model\UserTable');
+    		$this->userTable=$sm->get('Admin\Model\UserTable');
     	}
     	return $this->userTable;
     }
