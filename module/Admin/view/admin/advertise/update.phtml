@@ -1,0 +1,93 @@
+<?php
+	$this->headScript()->appendFile(
+    '//code.jquery.com/jquery-1.11.3.min.js',
+    'text/javascript'
+	);
+?>
+<!-- cdn for modernizr, if you haven't included it already -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+<!-- polyfiller file to detect and load polyfills -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+</script>
+<script type="text/javascript">
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result).height(100);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<h3>Update Advertise</h3>
+<div>
+	<a href="<?php echo $this->url('advertise') ?>">home</a>
+</div>
+<div>
+	<span style="color: red;"><?php if(isset($message)) echo $message ?></span>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+	<div class="container">
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Choose image:</td>
+					<td>
+						<img id="blah" src="<?php if(isset($ads->image)) echo '/upload/ads/'.$ads->image ?>" height="100px" alt="ads image" title="ads image">
+						<input type="file" name="image" accept="image/*" onchange="readURL(this);">
+					</td>
+				</tr>
+				<tr>
+					<td>Link to:</td>
+					<td><input type="text" name="link" required="required" value="<?php if(isset($ads->link)) echo $ads->link ?>"></td>
+				</tr>
+				<tr>
+					<td>Date start:</td>
+					<td><input type="date" name="date_start" required="required" value="<?php if(isset($ads->date_start)) echo $ads->date_start ?>"></td>
+				</tr>
+				<tr>
+					<td>Date end:</td>
+					<td><input type="date" name="date_end" required="required" value="<?php if(isset($ads->date_end)) echo $ads->date_end ?>"></td>
+				</tr>
+				<tr>
+					<td>Location:</td>
+					<td>
+						<select name="location">
+							<option value="top" <?php if($ads->location=='top') echo 'selected="selected"' ?>>top</option>
+							<option value="left" <?php if($ads->location=='left') echo 'selected="selected"' ?>>left</option>
+							<option value="right" <?php if($ads->location=='right') echo 'selected="selected"' ?>>right</option>
+							<option value="bottom" <?php if($ads->location=='bottom') echo 'selected="selected"' ?>>bottom</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>View count:</td>
+					<td><input type="number" name="view_count" value="<?php if(isset($ads->view_count)) echo $ads->view_count ?>"></td>
+				</tr>
+				<tr>
+					<td>Click count:</td>
+					<td><input type="number" name="click_count" value="<?php if(isset($ads->click_count)) echo $ads->click_count ?>"></td>
+				</tr>
+				<tr>
+					<td>Show:</td>
+					<td>
+						<select name="show">
+							<option value="1" <?php if($ads->show=='1') echo 'selected="selected"' ?>>show</option>
+							<option value="0" <?php if($ads->show=='0') echo 'selected="selected"' ?>>don't show</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Update"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</form>

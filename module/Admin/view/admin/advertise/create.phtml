@@ -1,0 +1,81 @@
+<?php
+	$this->headScript()->appendFile(
+    '//code.jquery.com/jquery-1.11.3.min.js',
+    'text/javascript'
+	);
+?>
+<!-- cdn for modernizr, if you haven't included it already -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+<!-- polyfiller file to detect and load polyfills -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+</script>
+<script type="text/javascript">
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result).height(100);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<h3>Creare Advertise</h3>
+<div>
+	<a href="<?php echo $this->url('advertise') ?>">home</a>
+</div>
+<div>
+	<span style="color: red;"><?php if(isset($message)) echo $message 	?></span>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+	<table class="table">
+		<tr>
+			<td>Choose image:</td>
+			<td>
+				<img id="blah" alt="ads image" title="ads image">
+				<input type="file" name="image" accept="image/*" onchange="readURL(this);">
+			</td>
+		</tr>
+		<tr>
+			<td>Link to:</td>
+			<td><input type="text" name="link" required="required"></td>
+		</tr>
+		<tr>
+			<td>Date start:</td>
+			<td><input type="date" name="date_start" required="required" value="<?php echo date('Y-m-d') ?>"></td>
+		</tr>
+		<tr>
+			<td>Date end:</td>
+			<td><input type="date" name="date_end" required="required"></td>
+		</tr>
+		<tr>
+			<td>Location:</td>
+			<td>
+				<select name="location">
+					<option value="top" selected="selected">top</option>
+					<option value="left">left</option>
+					<option value="right">right</option>
+					<option value="bottom">bottom</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Show:</td>
+			<td>
+				<select name="show">
+					<option value="1" selected="selected">show</option>
+					<option value="0">don't show</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Create"></td>
+		</tr>
+	</table>
+</form>

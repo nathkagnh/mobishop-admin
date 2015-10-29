@@ -7,6 +7,8 @@ return array(
 			'Admin\Controller\Admin'=>'Admin\Controller\AdminController',
 			'Admin\Controller\User'=>'Admin\Controller\UserController',
 			'Admin\Controller\Shopinfo'=>'Admin\Controller\ShopinfoController',
+			'Admin\Controller\Advertise'=>'Admin\Controller\AdvertiseController',
+			'Admin\Controller\Manufacture'=>'Admin\Controller\ManufactureController',
 		),
 	),
 	'router'=>array(
@@ -45,6 +47,34 @@ return array(
 					),
 					'defaults'=>array(
 						'controller'=>'Admin\Controller\Shopinfo',
+						'action'=>'index',
+					),
+				),
+			),
+			'advertise'=>array(
+				'type'=>'Segment',
+				'options'=>array(
+					'route'=>'/advertise[/:action[/id=:id[?status=:status]]]',
+					'constraints'=>array(
+						'action'=>'[a-zA-Z0-9_-]*',
+						'id'=>'[0-9]+',
+						'status'=>'[0-9]+',
+					),
+					'defaults'=>array(
+						'controller'=>'Admin\Controller\Advertise',
+						'action'=>'index',
+					),
+				),
+			),
+			'manufacture'=>array(
+				'type'=>'Segment',
+				'options'=>array(
+					'route'=>'/manufacture[/:action]',
+					'constraints'=>array(
+						'action'=>'[a-zA-Z0-9_-]*',
+					),
+					'defaults'=>array(
+						'controller'=>'Admin\Controller\Manufacture',
 						'action'=>'index',
 					),
 				),

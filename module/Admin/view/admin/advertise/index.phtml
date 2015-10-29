@@ -1,0 +1,52 @@
+<h3>Advertise manager</h3>
+<ul>
+	<li>
+		Create new ads: <a href="<?php echo $this->url('advertise', array('action'=>'create')) ?>">create</a>
+	</li>
+</ul>
+<table class="table">
+	<caption>List ads</caption>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Image</th>
+			<th>Link</th>
+			<th>Location</th>
+			<th>Start</th>
+			<th>End</th>
+			<th>View count</th>
+			<th>Click count</th>
+			<th>Show or hide on website</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($advertises as $advertise): ?>
+		<tr>
+			<td><?php echo $advertise->id ?></td>
+			<td>
+				<img src="<?php echo '/upload/ads/'.$advertise->image ?>" height="100px">
+			</td>
+			<td>
+				<a href="<?php echo $advertise->link ?>"><?php echo $advertise->link ?></a>
+			</td>
+			<td><?php echo $advertise->location ?></td>
+			<td><?php echo $advertise->date_start ?></td>
+			<td><?php echo $advertise->date_end ?></td>
+			<td><?php echo $advertise->view_count ?></td>
+			<td><?php echo $advertise->click_count ?></td>
+			<td>
+				<?php
+					if($advertise->show) echo '<a href="'.$this->url('advertise', array('action'=>'show', 'id'=>$advertise->id, 'status'=>$advertise->show)).'">hide</a>';
+					else echo '<a href="'.$this->url('advertise', array('action'=>'show', 'id'=>$advertise->id, 'status'=>$advertise->show)).'">show</a>';
+				?>
+				
+			</td>
+			<td>
+				<a href="<?php echo $this->url('advertise', array('action'=>'update', 'id'=>$advertise->id)) ?>">update</a>
+				<a href="<?php echo $this->url('advertise', array('action'=>'delete', 'id'=>$advertise->id)) ?>">delete</a>
+			</td>
+		</tr>
+	<?php endforeach ?>
+	</tbody>
+</table>
