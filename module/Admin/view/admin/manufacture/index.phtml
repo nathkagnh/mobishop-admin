@@ -1,4 +1,23 @@
 <h3>Manufacture Manager</h3>
 <form>
-	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Tel</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach($ms as $m) ?>
+			<tr>
+				<td><?php echo $m->id ?></td>
+				<td><?php echo $m->name ?></td>
+				<td><?php echo $m->address ?></td>
+				<td><?php echo $m->tel ?></td>
+			</tr>
+		<?php endforeach ?>
+		</tbody>
+	</table>
 </form>
