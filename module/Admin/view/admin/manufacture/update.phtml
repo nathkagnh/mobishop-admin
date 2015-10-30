@@ -1,0 +1,27 @@
+<h3>Update Manufacture</h3>
+<a href="<?php echo $this->url('manufacture') ?>">Home</a>
+</br>
+<div>
+	<span style="color: red;"><?php if(isset($message)) echo $message ?></span>
+</div>
+<form action="" method="post">
+	<table class="table">
+		<tbody>
+			<tr>
+				<td><label for="name">Name:</label></td>
+				<td><input type="text" name="name" required="required" value="<?php if(!empty($m->name)) echo $m->name ?>"></td>
+			</tr>
+			<tr>
+				<td><label for="address">Address:</label></td>
+				<td><input type="text" name="address" required="required" value="<?php if(!empty($m->address)) echo $m->address ?>"></td>
+			</tr>
+			<tr>
+				<td><label for="tel">Tel:</label></td>
+				<td><input type="text" name="tel" required="required" value="<?php if(!empty($m->tel)) echo $m->tel ?>"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Update"></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

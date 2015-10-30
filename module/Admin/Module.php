@@ -16,6 +16,9 @@ use Admin\Model\AdvertiseTable;
 use Admin\Model\Manufacture;
 use Admin\Model\ManufactureTable;
 
+use Admin\Model\Product;
+use Admin\Model\ProductTable;
+
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -98,6 +101,19 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Manufacture());
                     return new TableGateway('manufacture', $dbAdapter, null, $resultSetPrototype);
+                },
+
+                //Product
+                'Admin\Model\ProductTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ProductTableGateway');
+                    $table = new ProductTable($tableGateway);
+                    return $table;
+                },
+                'ProductTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Product());
+                    return new TableGateway('product', $dbAdapter, null, $resultSetPrototype);
                 },
             ),
         );

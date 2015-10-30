@@ -22,7 +22,16 @@ class ManufactureTable
 	public function getManufacture($id)
 	{
 		$id=(int)$id;
-		$resultSet=$this->tableGateway->select(array('id')=>$id);
+		$resultSet=$this->tableGateway->select(array('id'=>$id));
+		$result=$resultSet->current();
+		if(!$result)
+			return null;
+		return $result;
+	}
+
+	public function getManufactureByName($name)
+	{
+		$resultSet=$this->tableGateway->select(array('name'=>$name));
 		$result=$resultSet->current();
 		if(!$result)
 			return null;
@@ -58,7 +67,7 @@ class ManufactureTable
 
 	public function deleteManufacture($id)
 	{
-		$id=(int)$m->id;
+		$id=(int)$id;
 		$this->tableGateway->delete(array('id'=>$id));
 	}
 }

@@ -1,0 +1,27 @@
+<h3>Create Manufacture</h3>
+<a href="<?php echo $this->url('manufacture') ?>">Home</a>
+</br>
+<div>
+	<span style="color: red;"><?php if(isset($message)) echo $message ?></span>
+</div>
+<form action="" method="post">
+	<table class="table">
+		<tbody>
+			<tr>
+				<td><label for="name">Name:</label></td>
+				<td><input type="text" name="name" required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="address">Address:</label></td>
+				<td><input type="text" name="address" required="required"></td>
+			</tr>
+			<tr>
+				<td><label for="tel">Tel:</label></td>
+				<td><input type="text" name="tel" required="required"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Create"></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

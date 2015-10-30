@@ -1,4 +1,12 @@
 <h3>Manufacture Manager</h3>
+<div>
+	<a href="<?php echo $this->url('home') ?>">home</a>
+</div>
+<div>
+	<ul>
+		<li>Create new: <a href="<?php echo $this->url('manufacture', array('action'=>'create')) ?>">create</a></li>
+	</ul>
+</div>
 <form>
 	<table class="table">
 		<thead>
@@ -7,15 +15,20 @@
 				<th>Name</th>
 				<th>Address</th>
 				<th>Tel</th>
+				<th>Edit</th>
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach($ms as $m) ?>
+		<?php foreach($ms as $m): ?>
 			<tr>
 				<td><?php echo $m->id ?></td>
 				<td><?php echo $m->name ?></td>
 				<td><?php echo $m->address ?></td>
 				<td><?php echo $m->tel ?></td>
+				<td>
+					<a href="<?php echo $this->url('manufacture', array('action'=>'update', 'id'=>$m->id)) ?>">update</a>
+					<a href="<?php echo $this->url('manufacture', array('action'=>'delete', 'id'=>$m->id)) ?>">delete</a>
+				</td>
 			</tr>
 		<?php endforeach ?>
 		</tbody>

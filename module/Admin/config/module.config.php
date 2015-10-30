@@ -9,6 +9,7 @@ return array(
 			'Admin\Controller\Shopinfo'=>'Admin\Controller\ShopinfoController',
 			'Admin\Controller\Advertise'=>'Admin\Controller\AdvertiseController',
 			'Admin\Controller\Manufacture'=>'Admin\Controller\ManufactureController',
+			'Admin\Controller\Product'=>'Admin\Controller\ProductController',
 		),
 	),
 	'router'=>array(
@@ -69,12 +70,27 @@ return array(
 			'manufacture'=>array(
 				'type'=>'Segment',
 				'options'=>array(
-					'route'=>'/manufacture[/:action]',
+					'route'=>'/manufacture[/:action[/id=:id]]',
 					'constraints'=>array(
 						'action'=>'[a-zA-Z0-9_-]*',
+						'id'=>'[0-9]+',
 					),
 					'defaults'=>array(
 						'controller'=>'Admin\Controller\Manufacture',
+						'action'=>'index',
+					),
+				),
+			),
+			'product'=>array(
+				'type'=>'Segment',
+				'options'=>array(
+					'route'=>'/product[/:action[/id=:id]]',
+					'constraints'=>array(
+						'action'=>'[a-zA-Z0-9_-]*',
+						'id'=>'[0-9]+',
+					),
+					'defaults'=>array(
+						'controller'=>'Admin\Controller\Product',
 						'action'=>'index',
 					),
 				),
