@@ -1,1 +1,46 @@
 <h3>Product Manager</h3>
+<div>
+	<a href="<?php echo $this->url('home') ?>">home</a>
+</div>
+<div>
+	<ul>
+		<li>Create new product: <a href="<?php echo $this->url('product', array('action'=>'create')) ?>">create</a></li>
+	</ul>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Manufacture</th>
+			<th>Image</th>
+			<th>Detail</th>
+			<th>Inventory number</th>
+			<th>Sale number</th>
+			<th>Date</th>
+			<th>Show</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($products as $product): ?>
+		<tr>
+			<td><?php echo $product->id ?></td>
+			<td><?php echo $product->name ?></td>
+			<td><?php echo $product->price ?></td>
+			<td><?php echo $product->manufacture ?></td>
+			<td><?php echo $product->image ?></td>
+			<td><?php echo $product->detail ?></td>
+			<td><?php echo $product->inventory_number ?></td>
+			<td><?php echo $product->sale_number ?></td>
+			<td><?php echo $product->date ?></td>
+			<td><?php echo $product->show ?></td>
+			<td>
+				<a href="">update</a>
+				<a href="">delete</a>
+			</td>
+		</tr>
+	<?php endforeach ?>
+	</tbody>
+</table>

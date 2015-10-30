@@ -10,6 +10,7 @@ return array(
 			'Admin\Controller\Advertise'=>'Admin\Controller\AdvertiseController',
 			'Admin\Controller\Manufacture'=>'Admin\Controller\ManufactureController',
 			'Admin\Controller\Product'=>'Admin\Controller\ProductController',
+			'Admin\Controller\Ajax'=>'Admin\Controller\AjaxController',
 		),
 	),
 	'router'=>array(
@@ -92,6 +93,19 @@ return array(
 					'defaults'=>array(
 						'controller'=>'Admin\Controller\Product',
 						'action'=>'index',
+					),
+				),
+			),
+			'ajax'=>array(
+				'type'=>'Segment',
+				'options'=>array(
+					'route'=>'/ajax[/:action[/id=:id]]',
+					'constraints'=>array(
+						'action'=>'[a-zA-Z0-9_-]*',
+						'id'=>'[0-9]+',
+					),
+					'defaults'=>array(
+						'controller'=>'Admin\Controller\Ajax',
 					),
 				),
 			),

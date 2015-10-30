@@ -1,0 +1,67 @@
+<h4>Step 1: Information</h4>
+<form action="" method="post">
+	<table class="table">
+		<tr>
+			<td><label for="name">Name:</label></td>
+			<td><input type="text" name="name" required="required"></td>
+		</tr>
+		<tr>
+			<td><label for="price">Price:</label></td>
+			<td><input type="text" name="price" required="required"></td>
+		</tr>
+		<tr>
+			<td><label>Manufacture:</label></td>
+			<td>
+				<select name="manufacture">
+				<?php foreach($ms as $m): ?>
+					<option value="<?php echo $m->id ?>"><?php echo $m->name ?></option>
+				<?php endforeach ?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for="inventory_number">Inventory number:</label></td>
+			<td><input type="text" name="inventory_number" required="required"></td>
+		</tr>
+		<tr>
+			<td><label for="date">Date:</label></td>
+			<td><input type="text" name="date" required="required"></td>
+		</tr>
+		<tr>
+			<td><label>Show:</label></td>
+			<td>
+				<select name="show">
+					<option value="1">show</option>
+					<option value="0">hiden</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="button" value="Next step" onclick="loadStep2()"></td>
+		</tr>
+	</table>
+</form>
+<script type="text/javascript">
+	function loadStep2()
+	{
+		$.ajax({
+		   url: "/ajax/createproductstep2<?php if(isset($id)) echo '/id='.$id ?>",
+		   type : "post",
+		   data: {
+			   	name:document.getElementByName('name').value, 
+			   	price:document.getElementByName('price').value, 
+			   	manufacture:document.getElementByName('manufacture').value, 
+			   	inventory_number:document.getElementByName('inventory_number').value, 
+			   	date:document.getElementByName('date').value, 
+			   	show:document.getElementByName('show').value
+		   },
+		   dataType:"text",
+		   success: function(data) {
+		      $('#ajax').html(data);
+		   },
+		   error: function() {
+		      $('#ajax').html('<p>An error has occurred</p>');
+		   },
+		});
+	}
+</script>

@@ -1,0 +1,27 @@
+<?php
+	$this->headScript()->appendFile(
+    '//code.jquery.com/jquery-1.11.3.min.js',
+    'text/javascript'
+	);
+?>
+<h3>Create Product</h3>
+<div>
+	<a href="<?php echo $this->url('product') ?>">List of products</a>
+</div>
+<div id="ajax">
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		$.ajax({
+			url: '/ajax/createproductstep1',
+			type : "post",
+			dataType:"text",
+			success: function(data) {
+			$('#ajax').html(data);
+			},
+			error: function() {
+			$('#ajax').html('<p>An error has occurred</p>');
+			},
+		});
+	});
+</script>
+</div>
