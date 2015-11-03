@@ -85,10 +85,11 @@ return array(
 			'product'=>array(
 				'type'=>'Segment',
 				'options'=>array(
-					'route'=>'/product[/:action[/id=:id]]',
+					'route'=>'/product[/:action[/id=:id][/step=:step]]',
 					'constraints'=>array(
 						'action'=>'[a-zA-Z0-9_-]*',
 						'id'=>'[0-9]+',
+						'step'=>'[0-9]+',
 					),
 					'defaults'=>array(
 						'controller'=>'Admin\Controller\Product',

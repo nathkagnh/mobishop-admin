@@ -4,6 +4,8 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use Admin\Model\Product;
+
 class ProductController extends AbstractActionController
 {
 	protected $productTable;
@@ -20,11 +22,43 @@ class ProductController extends AbstractActionController
 
 	public function createAction()
 	{
-		$manufactures=$this->getManufactureTable()->fetchAll();
+		$step=(int)$this->params()->fromRoute('step');
+		$array=array();
 
-		return new ViewModel(array(
-			'ms'=>$manufactures,
-		));
+		$request=$this->getRequest();
+
+		if($request->isPost())
+		{
+			$post=$request->getPost();
+			if(isset($post['name']))
+			{
+				$data=new Product();
+				$data->name=$post['name'];
+				$data->price=$post['price'];
+				$data->manufacture=$post['manufacture'];
+				$data->inventory_number=$post['inventory_number'];
+				$data->date=$post['date'];
+				$data->show=$post['show'];
+
+				var_dump($this->getProductTable()->insertProduct($data));die;
+			}
+			else if(isset($post['image']))
+			{
+
+			}
+			else
+			{
+
+			}
+		}
+
+		if($step==1)
+		{
+			$manufactures=$this->getManufactureTable()->fetchAll();
+			$array['ms']=$manufactures;
+		}
+		$array['step']=$step;
+		return new ViewModel($array);
 	}
 
 	public function getProductTable()

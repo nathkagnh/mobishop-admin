@@ -43,7 +43,7 @@ class ProductTable
 			'date'=>$product->date,
 		);
 
-		$this->tableGateway->insert($data);
+		return $this->tableGateway->insert($data);
 	}
 
 	public function updateProduct(Product $product)

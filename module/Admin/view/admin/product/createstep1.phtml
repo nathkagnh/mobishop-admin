@@ -37,31 +37,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="button" value="Next step" onclick="loadStep2()"></td>
+			<td colspan="2"><input type="submit" value="Next step"></td>
 		</tr>
 	</table>
 </form>
-<script type="text/javascript">
-	function loadStep2()
-	{
-		$.ajax({
-		   url: "/ajax/createproductstep2<?php if(isset($id)) echo '/id='.$id ?>",
-		   type : "post",
-		   // data: {
-			  //  	name:document.getElementByName('name').value, 
-			  //  	price:document.getElementByName('price').value, 
-			  //  	manufacture:document.getElementByName('manufacture').value, 
-			  //  	inventory_number:document.getElementByName('inventory_number').value, 
-			  //  	date:document.getElementByName('date').value, 
-			  //  	show:document.getElementByName('show').value
-		   // },
-		   dataType:"text",
-		   success: function(data) {
-		      $('#ajax').html(data);
-		   },
-		   error: function() {
-		      $('#ajax').html('<p>An error has occurred</p>');
-		   },
-		});
-	}
-</script>
