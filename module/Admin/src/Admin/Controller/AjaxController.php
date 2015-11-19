@@ -8,30 +8,31 @@ class AjaxController extends AbstractActionController
 {
 	protected $manufactureTable;
 
-	public function createproductstep1Action()
-	{
-		$manufactures=$this->getManufactureTable()->fetchAll();
-
-		return new ViewModel(array(
+	public function createProductStep1Action()
+	{ 
+	    $manufactures=$this->getManufactureTable()->fetchAll();
+		$view=new ViewModel(array(
 			'ms'=>$manufactures,
-			'id'=>'12121',
-		));
+			));
+		$view->setTemplate('admin/ajax/createproductstep1');
+	    $view->setTerminal(true);
+	    return $view;
 	}
 
-	public function createproductstep2Action()
+	public function createProductStep2Action()
 	{
-		$id=$this->params()->fromRoute('id');
-		return new ViewModel(array(
-			'id'=>$id,
-		));
+		$view=new ViewModel();
+		$view->setTemplate('admin/ajax/createproductstep2');
+	    $view->setTerminal(true);
+	    return $view;
 	}
 
-	public function createproductstep3Action()
+	public function createProductStep3Action()
 	{
-		$id=$this->params()->fromRoute('id');
-		return new ViewModel(array(
-			'id'=>$id,
-		));
+		$view=new ViewModel();
+		$view->setTemplate('admin/ajax/createproductstep3');
+	    $view->setTerminal(true);
+	    return $view;
 	}
 
 	public function getManufactureTable()

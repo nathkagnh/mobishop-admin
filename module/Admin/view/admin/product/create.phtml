@@ -1,8 +1,10 @@
-<!-- <h3>Create Product</h3> -->
-<!-- <div>
-	<a href="<?php echo $this->url('product') ?>">List of products</a>
-</div> -->
 <?php
-	$pathStep='\createstep'.$step.'.phtml';
-	include($pathStep); 
+$this->headScript()->appendFile('/js/create.js', 'text/javascript');
 ?>
+<h3>Create Product</h3>
+<div>
+	<a href="<?php echo $this->url('product') ?>">List of products</a>
+</div>
+<div id="create">
+
+</div>

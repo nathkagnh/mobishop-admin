@@ -115,11 +115,9 @@ return array(
 			'product'=>array(
 				'type'=>'Segment',
 				'options'=>array(
-					'route'=>'/product[/:action[/id=:id][/step=:step]]',
+					'route'=>'/product[/:action]',
 					'constraints'=>array(
 						'action'=>'[a-zA-Z0-9_-]*',
-						'id'=>'[0-9]+',
-						'step'=>'[0-9]+',
 						),
 					'defaults'=>array(
 						'controller'=>'Admin\Controller\Product',
@@ -130,10 +128,9 @@ return array(
 			'ajax'=>array(
 				'type'=>'Segment',
 				'options'=>array(
-					'route'=>'/ajax[/:action[/id=:id]]',
+					'route'=>'/ajax[/:action]',
 					'constraints'=>array(
 						'action'=>'[a-zA-Z0-9_-]*',
-						'id'=>'[0-9]+',
 						),
 					'defaults'=>array(
 						'controller'=>'Admin\Controller\Ajax',

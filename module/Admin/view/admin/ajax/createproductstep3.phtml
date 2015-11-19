@@ -3,26 +3,11 @@
 	<table class="table">
 		<tr>
 			<td><label>Detail:</label></td>
-			<td><textarea name="detail"><?php if(isset($id)) echo $id ?></textarea></td>
+			<td><textarea name="detail"></textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="button" value="Previous step 2" onclick="loadStep2()"></td>
+			<td><input type="button" value="Previous step 2" onClick="prevStep2();"></td>
+			<td><input type="button" value="Create" onClick="createPro();"></td>
 		</tr>
 	</table>
 </form>
-<script type="text/javascript">
-	function loadStep2()
-	{
-		$.ajax({
-		   url: '/ajax/createproductstep2<?php if(isset($id)) echo '/id='.$id ?>',
-		   type : "post",
-		   dataType:"text",
-		   success: function(data) {
-		      $('#ajax').html(data);
-		   },
-		   error: function() {
-		      $('#ajax').html('<p>An error has occurred</p>');
-		   },
-		});
-	}
-</script>
