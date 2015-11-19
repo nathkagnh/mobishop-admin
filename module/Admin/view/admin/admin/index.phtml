@@ -1,4 +1,16 @@
+<?php
+	$this->headScript()->appendFile('/js/login.js', 'text/javascript');
+?>
 <h3>Mobishop-Admin</h3>
+
+<div>
+	<?php if($infoUser==null): ?>
+		<a href="#" data-toggle="modal" data-target="#myModal">Login</a>/<a href="<?php echo $this->url('register') ?>">Register</a>
+	<?php else: ?>
+		<a>hi: <?php echo $infoUser['name'] ?></a>/<a href="<?php echo $this->url('logout') ?>">Logout</a>
+	<?php endif ?>
+</div>
+
 </br>
 Menu:
 </br>
@@ -9,3 +21,6 @@ Menu:
 	<li>Manufacture: <a href="<?php echo $this->url('manufacture', array('action'=>'index')); ?>">go to page</a></li>
 	<li>Product: <a href="<?php echo $this->url('product', array('action'=>'index')); ?>">go to page</a></li>
 </ul>
+<script type="text/javascript">
+	var url_ajax_login = "<?php echo $this->url('login') ?>";
+</script>

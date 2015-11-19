@@ -50,6 +50,23 @@ class UserTable
 		return $row;
 	}
 
+	public function check($email, $pass)
+	{
+		$check=array();
+		$user=$this->getUserByEmail($email);
+		if($user!=null)
+		{
+			if($user->pass==$pass)
+			{
+				$check['id']=1;
+				$check['name']=$user->name;
+			}
+			else $check['id']=3;
+		}
+		else $check['id']=2;
+		return $check;
+	}
+
 	public function insertUser(User $user)
 	{
 		$data=array(
