@@ -21,7 +21,7 @@ var send3=false;
 
 function loadAjax(id){
 	$.ajax({
-		url: 'http://nhatkhang.admin:81/ajax/create-product-step-' + id,
+		url: url_ajax + '/create-product-step-' + id,
 		data: {},
 		dataType: 'text',
 		method: 'GET',
