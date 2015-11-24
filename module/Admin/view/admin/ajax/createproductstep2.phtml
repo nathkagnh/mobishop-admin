@@ -1,13 +1,70 @@
+<style>
+	.image{width: 102px; height: 102px; border: 1px solid #bbb; margin: 2px 2px; display: inline-block; position: relative;}
+	.image img{width: 100px; height: 100px;}
+	.img_remove{color: blue; padding: 0 3px; background-color: #fff; opacity: 0.5; cursor: pointer; font-weight: bold; position: absolute; top: 0; right: 0;}
+	.img_remove:hover{color: red;}
+</style>
 <h4>Step 2: Choose image</h4>
-<form action="" method="post">
-	<table class="table">
-		<tr>
-			<td><label>Image:</label></td>
-			<td><input type="file" name="image" accept="image/*"></td>
-		</tr>
-		<tr>
-			<td><input type="button" value="Previous step 1" onClick="prevStep1();"></td>
-			<td><input type="button" value="Next step" onClick="loadStep3();"></td>
-		</tr>
-	</table>
-</form>
+<table class="table">
+	<tr>
+		<td><label>Image:</label></td>
+		<td>
+			<div id="thumbs">
+
+			</div>
+			<input type="file" name="img_upload[]" accept="image/*" style="display: inline;" multiple="multiple">
+		</td>
+	</tr>
+	<tr>
+		<td><input type="button" value="Previous step 1" onClick="prevStep1();"></td>
+		<td><input type="button" value="Next step" onClick="loadStep3();"></td>
+	</tr>
+</table>
+<script type="text/javascript">
+	$(document).on("click", '.img_remove', function(e){
+		$(this).fadeOut(150, function(){
+			removeImage($(this).data('name'));
+			$(this).parent().remove();
+		});
+	});
+
+	$("input[name='img_upload[]']").on('change', handleFileSelect);
+
+	function handleFileSelect(e) {
+		var files = $(e.target)[0].files;
+		var filesArr = Array.prototype.slice.call(files);
+		filesArr.forEach(function(f) {
+			if(!f.type.match("image.*")) {
+				return;
+			}
+			if(checkFileName(f.name)){
+				images.push(f);
+
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#thumbs').append('<div class="image"><img src="' + e.target.result + '"><span class="img_remove" title="remove" data-name="' + f.name + '">&Chi;</span></div>');
+				}
+				reader.readAsDataURL(f);
+			}
+		});
+	}
+
+	function checkFileName(name){
+		for(var i=0; i<images.length; i++){
+			if(images[i].name===name){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	function removeImage(name){
+		for(var i=0; i<images.length; i++){
+			if(images[i].name===name){
+				images.splice(i, 1);
+				return true;
+			}
+		}
+		return false;
+	}
+</script>

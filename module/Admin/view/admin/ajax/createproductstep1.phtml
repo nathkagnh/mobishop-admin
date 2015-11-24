@@ -1,43 +1,41 @@
 <h4>Step 1: Information</h4>
-<form action="" method="post">
-	<table class="table">
-		<tr>
-			<td><label for="name">Name:</label></td>
-			<td><input type="text" name="name" id="name" required="required"></td>
-		</tr>
-		<tr>
-			<td><label for="price">Price:</label></td>
-			<td><input type="text" name="price" id="price" required="required"></td>
-		</tr>
-		<tr>
-			<td><label>Manufacture:</label></td>
-			<td>
-				<select name="manufacture" id="manufacture">
+<table class="table">
+	<tr>
+		<td><label for="name">Name:</label></td>
+		<td><input type="text" name="name" id="name" required="required"></td>
+	</tr>
+	<tr>
+		<td><label for="price">Price:</label></td>
+		<td><input type="text" name="price" id="price" required="required"></td>
+	</tr>
+	<tr>
+		<td><label>Manufacture:</label></td>
+		<td>
+			<select name="manufacture" id="manufacture">
 				<?php foreach($ms as $m): ?>
 					<option value="<?php echo $m->id ?>"><?php echo $m->name ?></option>
 				<?php endforeach ?>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td><label for="inventory_number">Inventory number:</label></td>
-			<td><input type="text" name="inventory_number" id="inventory_number" required="required"></td>
-		</tr>
-		<tr>
-			<td><label for="date">Date:</label></td>
-			<td><input type="text" name="date" id="date" required="required"></td>
-		</tr>
-		<tr>
-			<td><label>Show:</label></td>
-			<td>
-				<select name="show" id="show">
-					<option value="1">show</option>
-					<option value="0">hiden</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="button" value="Next step" onClick="loadStep2();"></td>
-		</tr>
-	</table>
-</form>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label for="inventory_number">Inventory number:</label></td>
+		<td><input type="text" name="inventory_number" id="inventory_number" required="required"></td>
+	</tr>
+	<tr>
+		<td><label for="date">Date:</label></td>
+		<td><input type="text" name="date" id="date" required="required"></td>
+	</tr>
+	<tr>
+		<td><label>Show:</label></td>
+		<td>
+			<select name="show" id="show">
+				<option value="1">show</option>
+				<option value="0">hiden</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="button" value="Next step" onClick="loadStep2();"></td>
+	</tr>
+</table>
