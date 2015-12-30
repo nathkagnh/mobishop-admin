@@ -38,14 +38,12 @@ class ShopinfoController extends AbstractActionController
 			$httpadapter->addValidator(
 				'Size',
 				true,
-				array('min'=>1000),
-				'logo'
+				array('min'=>1000)
 			);
 			$httpadapter->addValidator(
 				'Extension',
 				true,
-				array('png', 'jpg', 'jpeg'),
-				'logo'
+				array('png', 'jpg', 'jpeg')
 			);
 
 			// Rename file upload
@@ -53,9 +51,8 @@ class ShopinfoController extends AbstractActionController
 				'Rename',
 				array(
 					'target'=>__UPLOAD__.'/page/'.$logo['name'],
-					'randomize'=>true,
-				),
-				'logo'
+					'randomize'=>true
+				)
 			);
 
 			// Save file upload

@@ -4,7 +4,7 @@
  * to the application root now.
  */
 
-define('__UPLOAD__', __DIR__.'\upload');
+define('__UPLOAD__', __DIR__.'/upload');
 
 chdir(dirname(__DIR__));
 
