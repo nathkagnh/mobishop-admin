@@ -88,6 +88,7 @@ function prevStep2(){
 }
 
 function loadStep3(){
+	console.log(images);
 	loadAjax(3);
 }
 
@@ -129,5 +130,44 @@ function setDataStep3(){
 }
 
 function createPro(){
+	setDataStep3();
+	// var arrImage=[];
+	// images.forEach(function(img){
+	// 	var reader=new FileReader();
+	// 	reader.onload=function(e){
+	// 		console.log(e.target.result);
+	// 		arrImage.push(e.target.result);
+	// 	};
+	// 	reader.readAsDataURL(img);
+	// });
+	// // var image=JSON.stringify(arrImage);
 	
+	console.log(arrImage);
+	$.ajax({
+		url: url_post,
+		data: {
+			name: name,
+			price: price,
+			manufacture: manufacture,
+			inventory_number: inventory_number,
+			date: date,
+			show: show,
+			// image: image,
+			display: display,
+			os: os,
+			cpu: cpu,
+			camera: camera,
+			internal_memory: internal_memory,
+			ram: ram,
+			battery: battery
+			// more: more
+		},
+		method: 'POST',
+		success: function(response){
+			console.log(response);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			console.log('ERROR: '+textStatus);
+		}
+	});
 }

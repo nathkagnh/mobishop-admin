@@ -23,6 +23,16 @@ class ProductController extends AbstractActionController
 		return new ViewModel();
 	}
 
+	public function postAction()
+	{
+		$request=$this->getRequest();
+		if($request->isPost())
+		{
+			echo json_encode($request->getPost());
+			exit;
+		}
+	}
+
 	public function getProductTable()
 	{
 		if(!$this->productTable)
