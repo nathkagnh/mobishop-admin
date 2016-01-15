@@ -1,5 +1,6 @@
 <?php
 $this->inlineScript()->appendFile('/js/create.js', 'text/javascript');
+$this->headLink()->appendStylesheet('/css/style.css');
 ?>
 <h3>Create Product</h3>
 <div>
@@ -20,8 +21,9 @@ $this->inlineScript()->appendFile('/js/create.js', 'text/javascript');
 			<td><label>Manufacture:</label></td>
 			<td>
 				<select name="manufacture" id="manufacture">
-						<option value="1">Asus</option>
-						<option value="2">Apple</option>
+				<?php foreach($manufactures as $manufacture): ?>
+					<option value="<?php echo $manufacture->id ?>"><?php echo $manufacture->name ?></option>
+				<?php endforeach ?>
 				</select>
 			</td>
 		</tr>
@@ -54,9 +56,11 @@ $this->inlineScript()->appendFile('/js/create.js', 'text/javascript');
 			<td><label>Image:</label></td>
 			<td>
 				<div id="thumbs">
-
+					
 				</div>
-				<input type="file" name="img_upload[]" accept="image/*" style="display: inline;" multiple="multiple">
+				<div id="files" data-current="1">
+					<input type="file" id="image1" data-id="1" name="img_upload[]" accept="image/*" style="display: inline;">
+				</div>
 			</td>
 		</tr>
 		<tr>
@@ -66,12 +70,6 @@ $this->inlineScript()->appendFile('/js/create.js', 'text/javascript');
 	</table>
 </div>
 <div id="step3" class="step3">
-	<style type="text/css">
-		.text{width: 100%;}
-		.text_field_name{font-weight: bold;}
-		#field_remove{font-weight: bold; margin: 0 5px; padding: 0 3px; color: #aaa; cursor: pointer; border: 1px solid gray; background-color: #eee;}
-		#field_remove:hover{color: red; background-color: #bbb;}
-	</style>
 	<h4>Step 3: Details of product</h4>
 	<table class="table" id="table_step3">
 		<tr>
@@ -111,7 +109,7 @@ $this->inlineScript()->appendFile('/js/create.js', 'text/javascript');
 		</tr>
 		<tr>
 			<td><input type="button" value="Previous step 2" onClick="showStep2();"></td>
-			<td><input type="button" value="Create"></td>
+			<td><input type="button" id="btn-create" value="Create"></td>
 		</tr>
 	</table>
 </div>

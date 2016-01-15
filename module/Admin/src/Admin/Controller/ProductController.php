@@ -9,18 +9,22 @@ use Admin\Model\Product;
 class ProductController extends AbstractActionController
 {
 	protected $productTable;
+	protected $manufactureTable;
 
 	public function indexAction()
 	{
 		$products=$this->getProductTable()->fetchAll();
 		return new ViewModel(array(
-			'products'=>$products,
+			'products'=>$products
 			));
 	}
 
 	public function createAction()
 	{
-		return new ViewModel();
+		$manufactures=$this->getManufactureTable()->fetchAll();
+		return new ViewModel(array(
+			'manufactures'=>$manufactures
+			));
 	}
 
 	public function postAction()
@@ -41,5 +45,15 @@ class ProductController extends AbstractActionController
 			$this->productTable=$sm->get('Admin\Model\ProductTable');
 		}
 		return $this->productTable;
+	}
+
+	public function getManufactureTable()
+	{
+		if(!$this->manufactureTable)
+		{
+			$sm=$this->getServiceLocator();
+			$this->manufactureTable=$sm->get('Admin\Model\ManufactureTable');
+		}
+		return $this->manufactureTable;
 	}
 }
