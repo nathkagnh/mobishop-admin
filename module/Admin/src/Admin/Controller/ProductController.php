@@ -6,6 +6,12 @@ use Zend\View\Model\ViewModel;
 
 use Admin\Model\Product;
 
+use Zend\File\Transfer\Adapter\Http;
+use Zend\Validator\File\Size;
+use Zend\Validator\File\Extension;
+
+use Zend\Filter\File\Rename;
+
 class ProductController extends AbstractActionController
 {
 	protected $productTable;
@@ -29,10 +35,65 @@ class ProductController extends AbstractActionController
 
 	public function postAction()
 	{
-		$request=$this->getRequest();
+		$request = $this->getRequest();
 		if($request->isPost())
 		{
-			echo json_encode($request->getPost());
+			$product = new Product();
+			$product->name = $request->getPost('name');
+			$product->price = $request->getPost('price');
+			$product->manufacture = $request->getPost('manufacture');
+			$product->inventory_number = $request->getPost('inventory_number');
+			$product->date = $request->getPost('date');
+			$product->show = $request->getPost('show');
+
+			// Get images
+			$temp = array();
+			$imgTotal = intval($request->getPost('imgTotal'));
+			$httpadapter = new Http();
+			$httpadapter->addValidator(
+				'Size',
+				true,
+				array('min' => 1000)
+				);
+			$httpadapter->addValidator(
+				'Extension',
+				true,
+				array('png', 'jpg', 'jpeg')
+				);
+			for($i = 0; $i < $imgTotal; $i++)
+			{
+				$fileName = 'image_' . $i;
+				$image = $request->getFiles($fileName);
+				$httpadapter->addFilter(
+					'Rename',
+					array(
+						'target' => __UPLOAD__ . '/products/' . $product->name . '-' . $image['name'],
+						'randomize' => true
+						)
+					);
+				if($httpadapter->isValid())
+				{
+					if($httpadapter->receive($image['name']))
+					{
+						$temp[] = $httpadapter->getFileInfo()[$fileName]['name'];
+					}
+				}
+			}
+
+			$product->images = implode(';', $temp);
+			$product->display = $request->getPost('display');
+			$product->os = $request->getPost('os');
+			$product->cpu = $request->getPost('cpu');
+			$product->camera = $request->getPost('camera');
+			$product->internal_memory = $request->getPost('internal_memory');
+			$product->ram = $request->getPost('ram');
+			$product->battery = $request->getPost('battery');
+			$product->more = $request->getPost('more');
+
+			// Insert product
+			if($this->getProductTable()->insertProduct($product))
+				echo json_encode('successful');
+			else echo json_encode('Insert error');
 			exit;
 		}
 	}

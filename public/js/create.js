@@ -85,6 +85,56 @@ $(document).on('click', '#field_remove', function(){
 });
 
 // Create product
-$('#btn-create').click(function(e){
-	
-});
+function createPro(url){
+	// Form data
+	var formData = new FormData();
+
+	// Data of step 1:
+	formData.append('name', $('#name').val());
+	formData.append('price', $('#price').val());
+	formData.append('manufacture', $('#manufacture').val());
+	formData.append('inventory_number', $('#inventory_number').val());
+	formData.append('date', $('#date').val());
+	formData.append('show', $('#show').val());
+
+	// Data of step 2:
+	var images = $('input[name="img_upload[]"]');
+	var imgTotal = images.length-1;
+	for(var i=0; i<imgTotal; i++){
+		formData.append('image_'+i, images[i].files[0]);
+	}
+	formData.append('imgTotal', imgTotal);
+
+	// Data of step 3:
+	formData.append('display', $('#display').val());
+	formData.append('os', $('#os').val());
+	formData.append('cpu', $('#cpu').val());
+	formData.append('camera', $('#camera').val());
+	formData.append('internal_memory', $('#internal_memory').val());
+	formData.append('ram', $('#ram').val());
+	formData.append('battery', $('#battery').val());
+
+	var arrTemp = {};
+	arrFieldId.forEach(function(index){
+		arrTemp[$('input[name="field_name'+index+'"]').val()]=$('input[name="field_content'+index+'"]').val();
+	});
+
+	formData.append('more', JSON.stringify(arrTemp));
+
+	$.ajax({
+		url: url,
+		method: 'POST',
+		data: formData,
+		dataType: "text",
+		success: function(response){
+			$('#step3').hide();
+			$('#message').html('<center>' + response + '</center>');
+		},
+		error: function( jqXHR, textStatus, errorThrown){
+			$('#message').html('<center>' + textStatus + '</center>');
+			$('#step3').hide();
+		},
+		processData: false, // tell jQuery not to process the data
+		contentType: false 	// tell jQuery not to set contentType
+	});
+};

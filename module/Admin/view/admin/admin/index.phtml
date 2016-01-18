@@ -5,7 +5,7 @@
 
 <div>
 	<?php if($infoUser==null): ?>
-		<a href="#" data-toggle="modal" data-target="#myModal">Login</a>/<a href="<?php echo $this->url('register') ?>">Register</a>
+		<a href="#" data-toggle="modal" data-target="#myModal">Login</a>
 	<?php else: ?>
 		<a>hi: <?php echo $infoUser['name'] ?></a>/<a href="<?php echo $this->url('logout') ?>">Logout</a>
 	<?php endif ?>

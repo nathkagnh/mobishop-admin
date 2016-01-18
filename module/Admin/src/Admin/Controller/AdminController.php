@@ -62,11 +62,6 @@ class AdminController extends AbstractActionController
         return $this->redirect()->toRoute('home');
     }
 
-    public function registerAction()
-    {
-        return new ViewModel();
-    }
-
     public function getUserTable()
     {
         if(!$this->userTable)

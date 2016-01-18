@@ -45,16 +45,6 @@ return array(
 						),
 					),
 				),
-			'register'=>array(
-				'type'=>'Literal',
-				'options'=>array(
-					'route'=>'/register',
-					'defaults'=>array(
-						'controller'=>'Admin\Controller\Admin',
-						'action'=>'register',
-						),
-					),
-				),
 			'user'=>array(
 				'type'=>'Segment',
 				'options'=>array(

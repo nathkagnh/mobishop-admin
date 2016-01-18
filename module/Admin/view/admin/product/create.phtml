@@ -11,29 +11,29 @@ $this->headLink()->appendStylesheet('/css/style.css');
 	<table class="table">
 		<tr>
 			<td><label for="name">Name:</label></td>
-			<td><input type="text" name="name" id="name" required="required"></td>
+			<td><input type="text" name="name" id="name"></td>
 		</tr>
 		<tr>
 			<td><label for="price">Price:</label></td>
-			<td><input type="text" name="price" id="price" required="required"></td>
+			<td><input type="text" name="price" id="price"></td>
 		</tr>
 		<tr>
 			<td><label>Manufacture:</label></td>
 			<td>
 				<select name="manufacture" id="manufacture">
-				<?php foreach($manufactures as $manufacture): ?>
-					<option value="<?php echo $manufacture->id ?>"><?php echo $manufacture->name ?></option>
-				<?php endforeach ?>
+					<?php foreach($manufactures as $manufacture): ?>
+						<option value="<?php echo $manufacture->id ?>"><?php echo $manufacture->name ?></option>
+					<?php endforeach ?>
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<td><label for="inventory_number">Inventory number:</label></td>
-			<td><input type="text" name="inventory_number" id="inventory_number" required="required"></td>
+			<td><input type="text" name="inventory_number" id="inventory_number"></td>
 		</tr>
 		<tr>
 			<td><label for="date">Date:</label></td>
-			<td><input type="text" name="date" id="date" required="required"></td>
+			<td><input type="date" name="date" id="date"></td>
 		</tr>
 		<tr>
 			<td><label>Show:</label></td>
@@ -56,7 +56,7 @@ $this->headLink()->appendStylesheet('/css/style.css');
 			<td><label>Image:</label></td>
 			<td>
 				<div id="thumbs">
-					
+
 				</div>
 				<div id="files" data-current="1">
 					<input type="file" id="image1" data-id="1" name="img_upload[]" accept="image/*" style="display: inline;">
@@ -112,4 +112,11 @@ $this->headLink()->appendStylesheet('/css/style.css');
 			<td><input type="button" id="btn-create" value="Create"></td>
 		</tr>
 	</table>
+	<script type="text/javascript">
+		$('#btn-create').click(function(){
+			createPro("<?php echo $this->url('product', array('action' => 'post')) ?>");
+		});
+	</script>
+</div>
+<div id="message">
 </div>
