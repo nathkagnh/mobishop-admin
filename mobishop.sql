@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2015 at 02:34 AM
+-- Generation Time: Jan 18, 2016 at 11:22 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `manufacture` (
   `address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `tel` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `manufacture`
@@ -71,7 +71,8 @@ INSERT INTO `manufacture` (`id`, `name`, `address`, `tel`) VALUES
 (5, 'LG', 'dasda', '32132'),
 (6, 'Blackberry', 'dfdf', '45345'),
 (7, 'HTC', 'hgfhf', '5345'),
-(8, 'Samsung', 'rewr453', '5435');
+(8, 'Samsung', 'rewr453', '5435'),
+(9, 'Nokia', 'dsad', 'dsada');
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `price` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `manufacture` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `images` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `more` text COLLATE utf8_unicode_ci NOT NULL,
   `inventory_number` int(11) NOT NULL DEFAULT '0',
   `sale_number` int(11) NOT NULL DEFAULT '0',
@@ -98,7 +99,14 @@ CREATE TABLE IF NOT EXISTS `product` (
   `ram` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `battery` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `price`, `manufacture`, `images`, `more`, `inventory_number`, `sale_number`, `show`, `date`, `display`, `os`, `cpu`, `camera`, `internal_memory`, `ram`, `battery`) VALUES
+(4, 'Nokia 1080', '300000', '9', 'Nokia 1080-3-1448005329_660x0_569ca57c12560.jpg;Nokia 1080-8-1448011133_660x0_569ca57c12ea5.jpg;Nokia 1080-9-1448012865_660x0_569ca57c14311.jpg;Nokia 1080-10-1448014235_660x0_569ca57c1584b.jpg;Nokia 1080-images_569ca57c17236.png;Nokia 1080-IMGP0189-1447994185_660x0_569ca57c192ac.jpg;Nokia 1080-lion-', '{"Thẻ nhớ":"có"}', 100, 0, 1, '0000-00-00', 'Full HD', 'ios', '8 core, 3.5 Ghz', '24 Mp', '128 Gb', '4 Gb', '5000mA/h');
 
 -- --------------------------------------------------------
 
@@ -122,7 +130,19 @@ CREATE TABLE IF NOT EXISTS `shopinfo` (
 --
 
 INSERT INTO `shopinfo` (`id`, `name`, `logo`, `address`, `tel`, `introduce`, `image`) VALUES
-(1, 'name', '/upload/page/lion-photo_56833469326df.jpg', 'address', 'tel', '<p>introducesaffaf</p>\r\n', '');
+(1, 'name', '/upload/page/images_56838ef6c5928.png', 'address', 'tel', '<p>introducesaffaf</p>\r\n', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE IF NOT EXISTS `test` (
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
